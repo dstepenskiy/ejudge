@@ -602,7 +602,7 @@ curl_iface_contests_page_func(struct DownloadData *data, struct PolygonState *ps
 {
     unsigned char url_buf[1024];
 
-    snprintf(url_buf, sizeof(url_buf), "%s/contests?dummy=1%s", data->pkt->polygon_url, ps->ccid_amp);
+    snprintf(url_buf, sizeof(url_buf), "%s/contests?dummy=1&all=true%s", data->pkt->polygon_url, ps->ccid_amp);
     if (curl_iface_get_func(data, url_buf) != CURLE_OK) return 1;
     if (!data->clean_url || !ends_with(data->clean_url, "/contests")) {
         fprintf(data->log_f, "failed to retrieve contests page: redirected to %s\n", data->effective_url);
